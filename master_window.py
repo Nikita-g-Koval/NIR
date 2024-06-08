@@ -113,6 +113,8 @@ class MasterWindow:
         with open(path, "w") as file:
             file.write(text)
 
+        messagebox.showinfo(message="Файл успешно сохранён.", title="Уведомление")
+
 
 
 
