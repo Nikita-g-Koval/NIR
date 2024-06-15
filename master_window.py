@@ -62,7 +62,7 @@ class MasterWindow:
         self.show_spreadsheet_btn.grid(row=4, column=1, sticky=NSEW)
 
         self.save_file_btn = Button(self.master_window, text='Сохранить', command=self.save_file)
-        self.save_file_btn.grid(row=4, column=2, sticky=NSEW)
+        self.save_file_btn.ёgrid(row=4, column=2, sticky=NSEW)
 
         self.master_window.mainloop()
 
@@ -70,24 +70,18 @@ class MasterWindow:
         if not str.isdigit(self.period_entry.get()):
             messagebox.showwarning(message="Период должен быть числом!", title="Предупреждение")
             return
-        if not str.isdigit(self.left_bound_entry.get()):
-            messagebox.showwarning(message="Левая граница должна быть числом!", title="Предупреждение")
-            return
-        if not str.isdigit(self.right_bound_entry.get()):
-            messagebox.showwarning(message="Правая граница должна быть числом!", title="Предупреждение")
-            return
         if not str.isdigit(self.margin_of_error_entry.get()):
             messagebox.showwarning(message="Погрешность должна быть числом!", title="Предупреждение")
             return
 
-        left_bound = Decimal(self.left_bound_entry.get())
-        right_bound = Decimal(self.right_bound_entry.get())
         margin_of_error = int(self.margin_of_error_entry.get())
 
         try:
             step = Decimal(self.step_entry.get())
+            left_bound = Decimal(self.left_bound_entry.get())
+            right_bound = Decimal(self.right_bound_entry.get())
         except Exception as _ex:
-            messagebox.showwarning(message="Шаг должен быть числом!", title="Предупреждение")
+            messagebox.showwarning(message="Шаг и границы должны быть числом!", title="Предупреждение")
             return
 
         self.values = function.get_values(left_bound, right_bound, step, margin_of_error)
